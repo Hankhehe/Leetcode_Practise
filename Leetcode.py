@@ -21,29 +21,22 @@ class Leetcode:
         l3.sort()
         return l3
 
-    def removeDuplicates(nums) -> int:
+    def removeDuplicates(self,nums) -> int:
         i = 1
         for j in range(1, len(nums)):
             if nums[j - 1] < nums[j]:
                 nums[i] = nums[j]
                 i += 1
         return i
-
-    def twoSum(nums, target):
-        lookup = {}
-        for i, num in enumerate(nums):
-            if num in lookup:
-                return [lookup[num], i]
-        lookup[target - num] = i
-
-    def maxSubArray(nums):
+        
+    def maxSubArray(self,nums):
         max_ending_here, max_so_far = float('-inf'), float('-inf')
         for num in nums:
             max_ending_here = max(num, max_ending_here + num)
             max_so_far = max(max_so_far, max_ending_here)
         return max_so_far
 
-    def searchInsert(nums, target):
+    def searchInsert(self,nums, target):
         index = len(nums)//2
 
         while index != len(nums) and target > nums[index]:
@@ -57,7 +50,7 @@ class Leetcode:
         slist = s.strip().split(" ")
         return len(slist[-1])
 
-    def plusOne(digits: list) -> list:
+    def plusOne(self,digits: list) -> list:
         temp = str()
         retlist = []
         for digit in digits:
@@ -67,7 +60,7 @@ class Leetcode:
             retlist.append(tem)
         return retlist
 
-    def addBinary(a: str, b: str) -> str:
+    def addBinary(self,a: str, b: str) -> str:
         return format(int(a, 2) + int(b, 2), 'b')
 
     def climbStairs(self, n: int) -> int:  # 第 70 題，爬樓梯(費氏數列)
@@ -98,7 +91,7 @@ class Leetcode:
             result.append(chr(r + ord('A')))  # 用餘數 + A 的 ASCII code 得出是甚麼英文
         return ''.join(result[::-1])  # 返回
 
-    def reverseBits(self, n: int) -> int:
+    def reverseBits(self, n: int):
         # check = 1
         # binstr = ""
         # for i in range(32):
@@ -122,7 +115,6 @@ class Leetcode:
             result = result | 1
         print(bin(result))
         print(result)
-        return
 
     def hammingWeight(self, n: int) -> int:  # 191 Number of 1 Bits
         count = 0
@@ -133,16 +125,16 @@ class Leetcode:
             check <<= 1
         return count
 
-    def isPowerOfThree(self, n: int) -> bool:  # 326 Power of Three
+    def isPowerOfThree(self, n: int):  # 326 Power of Three
         if n == 0:
             return False
         if n == 1:
             return True
         if n < 3 and n > -3 and n != 1:
             return False
-        return self.isPowerOfThree(n/3)
+        return self.isPowerOfThree(int(n/3))
     
-    def maxProfit(prices) -> int: #121 Best Time to Buy and Sell Stock
+    def maxProfit(self,prices) -> int: #121 Best Time to Buy and Sell Stock
         max_ending_here, max_so_far = 0, 0
         for profit in map(operator.sub, prices[1:], prices):
             max_ending_here = max(max_ending_here + profit, 0)
