@@ -133,7 +133,7 @@ class Leetcode:
             check <<= 1
         return count
 
-    def isPowerOfThree(self, n: int) -> bool:  # 326 Power of Three
+    def isPowerOfThree(self, n: int):  # 326 Power of Three
         if n == 0:
             return False
         if n == 1:

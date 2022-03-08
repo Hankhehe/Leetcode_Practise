@@ -1,3 +1,22 @@
+temp = {'1':1,'2':2,'3':1}
+for k,v in temp.items():
+    print(f'Key: {k} , Value: {v}')
+pass
+
+s='abcdefga' 
+t='bacdaefg'
+record = [0] * 26
+for i in range(len(s)):
+    record[ord(s[i]) - ord("a")] += 1
+for i in t:
+    record[ord(i) - ord('a')] -= 1
+for i in record:
+    if i != 0:
+        assert False,'Is not same between s and t'
+print('True')
+
+pass
+
 def Fib(n): #堆疊練習
     if n<=1:
         return(n)
@@ -23,5 +42,21 @@ def bubbleshort(nums):
                 #nums[j+1],nums[j] = nums[j],nums[j+1]
     return nums
 
+def sortedSquares(nums:list[int])->list[int]: #雙指針練習
+    n= len(nums)
+    i,j,k = 0 ,n-1,n-1
+    ans = [-1] * n
+    while i <= j:
+        lm = nums[i] ** 2
+        rm = nums[j] ** 2
+        if lm > rm:
+            ans[k] = lm
+            i += 1
+        else:
+            ans[k] = rm
+            j -= 1
+        k -= 1
+    return ans
 
+sortedSquares([-4,-3,-1,2,3,6,7])
 Towers(4,'A','C','B')
