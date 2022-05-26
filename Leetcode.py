@@ -11,7 +11,6 @@ class SingleLinkedNode:
         self.val = x
         self.next = None
 
-
 class Leetcode:
     def longestCommonPrefix(self, strs) -> str:
         common_index = 0

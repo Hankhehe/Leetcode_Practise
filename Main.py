@@ -1,9 +1,13 @@
-from Leetcode import Leetcode
+from Leetcode import Leetcode,SingleLinkedNode,TreeNode
+from LinkedNode.SingleLinkedNode import OperatorSingleLinkedNode
 import time
 
-s = 'aabbccddeeffgghhiijjkkllmmnnoo'
-t = 'oonnmmllkkjjiihhggffeeddccbbaa'
-
-leedcode = Leetcode()
-a = leedcode.isIsomorphic(s,t)
-print(a)
+node = OperatorSingleLinkedNode()
+for i in range(30):
+    node.append(i)
+node.insert(999,3)
+print(node.travel())
+node.delete(4)
+print(node.travel())
+node.searchNodeByIndex(5)
+print( node.travel())
