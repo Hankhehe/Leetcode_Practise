@@ -34,16 +34,14 @@ class SingleLinkedNode:
             self.tall = tempnode.next
         return True
     
-    def DelNode(self,index:int)->bool:
-        tempnode = Node(0)
-        tempnode.next = self.head
-        for _ in range(index):
-            if tempnode:
-                tempnode = tempnode.next
-        if tempnode.next.next
-            tempnode.next = tempnode.next.next
-
-        
+    # def DelNode(self,index:int)->bool:
+    #     tempnode = Node(0)
+    #     tempnode.next = self.head
+    #     for _ in range(index):
+    #         if tempnode:
+    #             tempnode = tempnode.next
+    #     if tempnode.next.next
+    #         tempnode.next = tempnode.next.next
     
     def DelTop(self) -> None:
         if self.head:
@@ -75,9 +73,9 @@ nodelist.Addtall(51)
 nodelist.DelTop()
 nodelist.DelTall()
 nodelist.Printnode()
-print(nodelist.tall.val)
+nodelist.Printnode()
 
-# pass
+pass
         
 
         

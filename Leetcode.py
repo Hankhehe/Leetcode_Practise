@@ -99,25 +99,13 @@ class Leetcode:
         return ''.join(result[::-1])  # 返回
 
     def reverseBits(self, n: int) -> None:
-        # check = 1
-        # binstr = ""
-        # for i in range(32):
-        #     if check & n:
-        #         binstr += str('1')
-        #     else:
-        #         binstr += str('0')
-        #     check <<= 1
-        # return int(binstr, 2)
-
         n = 43261596
         result = 0
         for x in range(32):
             if (n & 1):
                 result = result | 1
-
             result <<= 1
             n >>= 1
-
         if (n & 1):
             result = result | 1
         print(bin(result))
@@ -179,3 +167,20 @@ class Leetcode:
         tree.left = self.sortedArrayToBST(nums[:mid])
         tree.right = self.sortedArrayToBST(nums[mid+1:])
         return tree
+    
+    def isIsomorphic(self, s: str, t: str) -> bool:
+        mapS = {}
+        mapT = {}
+        for i in range(len(s)):
+            valueS:str = s[i]
+            valueT:str = t[i]
+            if valueS not in mapS:
+                mapS[valueS] = valueT
+            elif mapS[valueS] != valueT:
+                return False
+
+            if valueT not in mapT:
+                mapT[valueT] = valueS
+            elif mapT[valueT] != valueS:
+                return False
+        return True
