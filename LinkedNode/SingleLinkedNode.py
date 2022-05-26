@@ -95,7 +95,7 @@ class OperatorSingleLinkedNode(object):
         self.length -= 1
 
     # 查詢 Value 的 Index
-    def isContain(self, num):
+    def searchNodeIndexbyValue(self, num):
         contain = 0
         current_Node = self.header
         for i in range(self.length):
@@ -105,7 +105,7 @@ class OperatorSingleLinkedNode(object):
         return
 
     # 切斷指定 index 之前的 Node
-    def searchNodeByIndex(self, index):
+    def cutNodeByIndex(self, index):
         current_Node = self.header
         if index <= 0 or index > self.length:
             while (index <= 0 or index > self.length):
