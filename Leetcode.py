@@ -6,6 +6,11 @@ class TreeNode:
         self.left = None
         self.right = None
 
+class SingleLinkedNode:
+    def __init__(self,x) -> None:
+        self.val = x
+        self.next = None
+
 
 class Leetcode:
     def longestCommonPrefix(self, strs) -> str:
