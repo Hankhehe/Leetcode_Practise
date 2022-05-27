@@ -35,7 +35,7 @@ pass
 # 二元樹
 node = Tree()
 for i in data:
-    node.Add(i)  #建立二元樹
+    node.Add(i)  #建立完整二元樹
 print(node.Level_Order_Queue())
 print(node.Pre_Order_Stack())
 print(node.In_Order_Stack())

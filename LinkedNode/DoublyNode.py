@@ -10,23 +10,23 @@ class DoublyLinkedNode:
         self.tall = self.head
 
     def AddTop(self,val) -> None:
-        temp = DoublyNode(val)
+        node = DoublyNode(val)
         if self.head:
-            temp.right = self.head
-            self.head.left = temp
-            self.head = temp
+            node.right = self.head
+            self.head.left = node
+            self.head = node
         else:
-            self.head = temp
+            self.head = node
             self.tall = self.head
 
     def Append(self,val) -> None:
-        temp = DoublyNode(val)
+        node = DoublyNode(val)
         if self.tall:
-            temp.left = self.tall
-            self.tall.right = temp
-            self.tall = temp
+            node.left = self.tall
+            self.tall.right = node
+            self.tall = node
         else:
-            self.head = temp
+            self.head = node
             self.tall = self.head
     
     def Insert(self,val,index) -> None:
@@ -70,8 +70,8 @@ class DoublyLinkedNode:
 class Tree:
     def __init__(self):
         self.root = None
- 
-    def Add(self,val):
+
+    def Add(self,val) -> None:
         # 為樹加入節點
         node  = DoublyNode(val)
         if not self.root:        #如果樹為空，就對根節點賦值
@@ -99,7 +99,6 @@ class Tree:
         node = self.root
         while myStack or node:
             while node:       #從根節點開始，一直尋找他的左子樹
-                # print(node.val)
                 result.append(node.val)
                 myStack.append(node)
                 node = node.left
@@ -118,7 +117,6 @@ class Tree:
                 node = node.left
             node = myStack.pop()
             result.append(node.val)
-            # print(node.val)
             node = node.right
         return result
   
@@ -138,7 +136,6 @@ class Tree:
             node = node.left
         while myStack2:
             result.append(myStack2.pop().val)
-            # print(myStack2.pop().val)
         return result
  
     def Level_Order_Queue(self) -> list | None:       #佇列實現層次遍歷
@@ -150,7 +147,6 @@ class Tree:
         while myQueue:
             node = myQueue.pop(0)
             result.append(node.val)
-            # print(node.val)
             if node.left:
                 myQueue.append(node.left)
             if node.right:
