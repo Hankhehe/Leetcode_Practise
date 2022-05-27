@@ -5,21 +5,29 @@ class DoublyNode:
         self.right = None
 
 class DoublyLinkedNode:
-    def __init__(self,val) -> None:
-        self.head = DoublyNode(val)
+    def __init__(self) -> None:
+        self.head = None
         self.tall = self.head
 
     def AddTop(self,val) -> None:
-        temp = self.head
-        self.head = DoublyNode(val)
-        self.head.right = temp
-        temp.left = self.head
+        temp = DoublyNode(val)
+        if self.head:
+            temp.right = self.head
+            self.head.left = temp
+            self.head = temp
+        else:
+            self.head = temp
+            self.tall = self.head
 
     def Append(self,val) -> None:
-        temp = self.tall
-        self.tall = DoublyNode(val)
-        self.tall.left = temp
-        temp.right = self.tall
+        temp = DoublyNode(val)
+        if self.tall:
+            temp.left = self.tall
+            self.tall.right = temp
+            self.tall = temp
+        else:
+            self.head = temp
+            self.tall = self.head
     
     def Insert(self,val,index) -> None:
         node = self.head
@@ -41,16 +49,18 @@ class DoublyLinkedNode:
         pre.right = node.right
         post.left = node.left
 
-    def Travel(self) -> list | None:
-        node = self.head
+    def Travel(self,node=None) -> list | None:
+        if not node:
+            node = self.head
         result = []
         while node :
             result.append(node.val)
             node = node.right
         return result
     
-    def TravelReversed(self) -> list | None:
-        node = self.tall
+    def TravelReversed(self,node=None) -> list | None:
+        if not node:
+            node = self.tall
         result = []
         while node :
             result.append(node.val)
@@ -58,13 +68,13 @@ class DoublyLinkedNode:
         return result
 
 class Tree:
-    def __init__(self,val):
-        self.root = DoublyNode(val)
+    def __init__(self):
+        self.root = None
  
     def Add(self,val):
         # 為樹加入節點
         node  = DoublyNode(val)
-        if self.root.val == -1:        #如果樹為空，就對根節點賦值
+        if not self.root:        #如果樹為空，就對根節點賦值
             self.root = node
         else:
             myQueue = []

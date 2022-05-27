@@ -4,19 +4,19 @@ class SingleNode:
         self.next = None
 
 class SingleLinkedNode:
-    def __init__(self):
+    def __init__(self) -> None:
         self.header = None
-        self.length = 0
+        self.length = 1
 
     # 1、判斷是否為空
-    def Is_Empty(self):
+    def Is_Empty(self) -> bool:
         if self.header == None:
             return True
         else:
             return False
 
     # 頭部插入
-    def AddTop(self, val):
+    def AddTop(self, val) -> None:
         node = SingleNode(val)
         # 如果為空
         if self.Is_Empty():
@@ -27,7 +27,7 @@ class SingleLinkedNode:
         self.length += 1
 
     # 尾部插入
-    def Append(self, val):
+    def Append(self, val) -> None:
         node = SingleNode(val)
         current_Node = self.header
         if self.Is_Empty():
@@ -40,7 +40,7 @@ class SingleLinkedNode:
             self.length += 1
 
     # 指定位置插入
-    def Insert(self, val, index):
+    def Insert(self, val, index) -> None:
         node = SingleNode(val)
         current_Node = self.header
         
@@ -74,7 +74,7 @@ class SingleLinkedNode:
         return result
 
     # 按索引刪除
-    def Delete(self, index):
+    def Delete(self, index) -> None:
         if index <= 0 or index > self.length:
             while (index <= 0 or index > self.length):
                 print("你輸入的下標不對，請重新輸入需要刪除的值的下標：")
@@ -95,7 +95,7 @@ class SingleLinkedNode:
         self.length -= 1
 
     # 查詢 Value 的 Index
-    def SearchNodeIndexbyValue(self, num):
+    def SearchNodeIndexbyValue(self, num) -> int | None:
         contain = 0
         current_Node = self.header
         for i in range(self.length):
@@ -103,16 +103,4 @@ class SingleLinkedNode:
                 return i
             current_Node = current_Node.next
         return
-
-    # 切斷指定 index 之前的 Node
-    def CutNodeByIndex(self, index):
-        current_Node = self.header
-        if index <= 0 or index > self.length:
-            while (index <= 0 or index > self.length):
-                print("你輸入的下標不對，請重新輸入:")
-                index = eval(input())
-        if index > 0 or index <= self.length:
-            for i in range(index):
-                current_Node = current_Node.next
-                self.header = current_Node
 
