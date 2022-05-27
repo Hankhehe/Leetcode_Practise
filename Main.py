@@ -1,10 +1,11 @@
 from Leetcode import Leetcode,SingleNode,DoublyNode
-from LinkedNode.SingleNode import OperatorSingleLinkedNode
+from LinkedNode.SingleNode import SingleLinkedNode
 from LinkedNode.DoublyNode import Tree,DoublyLinkedNode
 import time
 
+
 #單向連結串列
-node = OperatorSingleLinkedNode()
+node = SingleLinkedNode()
 for i in range(30):
     node.Append(i)  #建立單向連結串列
 print(node.Travel())
@@ -22,8 +23,14 @@ pass
 node = DoublyLinkedNode(0)
 for i in range(1,10):
     node.Append(i)
-print( node.Travel())
-print(node.TravelReserve())
+print(node.Travel())
+print(node.TravelReversed())
+node.Insert(999,3)
+print(node.Travel())
+print(node.TravelReversed())
+node.Delete(3)
+print(node.Travel())
+print(node.TravelReversed())
 pass
 
 #二元樹
@@ -36,12 +43,12 @@ print(node.Level_Order_Queue())
 pass
 
 
-# #二元樹遞迴取值
-# nodecpoy = node.root
-# node.Pre_Order_Recursion(nodecpoy)
-# node.In_Order_Recursion(nodecpoy)
-# node.Post_Order_Recursion(nodecpoy)
-# pass
+#二元樹遞迴取值
+nodecpoy = node.root
+node.Pre_Order_Recursion(nodecpoy)
+node.In_Order_Recursion(nodecpoy)
+node.Post_Order_Recursion(nodecpoy)
+pass
 
 
 

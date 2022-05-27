@@ -9,19 +9,38 @@ class DoublyLinkedNode:
         self.head = DoublyNode(val)
         self.tall = self.head
 
-    def AddTop(self,val):
+    def AddTop(self,val) -> None:
         temp = self.head
         self.head = DoublyNode(val)
         self.head.right = temp
         temp.left = self.head
 
-    def Append(self,val):
+    def Append(self,val) -> None:
         temp = self.tall
         self.tall = DoublyNode(val)
         self.tall.left = temp
         temp.right = self.tall
-        
     
+    def Insert(self,val,index) -> None:
+        node = self.head
+        for i in range(index -1):
+            node = node.right
+        temp = DoublyNode(val)
+        temp.right = node
+        temp.left = node.left
+        temppre = node.left
+        node.left = temp
+        temppre.right = temp
+    
+    def Delete(self,index) -> None:
+        node = self.head
+        for i in range(index -1):
+            node = node.right
+        pre = node.left
+        post = node.right
+        pre.right = node.right
+        post.left = node.left
+
     def Travel(self) -> list | None:
         node = self.head
         result = []
@@ -30,7 +49,7 @@ class DoublyLinkedNode:
             node = node.right
         return result
     
-    def TravelReserve(self) -> list | None:
+    def TravelReversed(self) -> list | None:
         node = self.tall
         result = []
         while node :

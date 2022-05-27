@@ -3,7 +3,7 @@ class SingleNode:
         self.val = val
         self.next = None
 
-class OperatorSingleLinkedNode:
+class SingleLinkedNode:
     def __init__(self):
         self.header = None
         self.length = 0
