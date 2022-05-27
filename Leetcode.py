@@ -1,12 +1,12 @@
 import operator
 
-class TreeNode:
+class DoublyNode:
     def __init__(self,x:int) -> None:
         self.val = x
         self.left = None
         self.right = None
 
-class SingleLinkedNode:
+class SingleNode:
     def __init__(self,x) -> None:
         self.val = x
         self.next = None
@@ -164,10 +164,10 @@ class Leetcode:
             index +=k
         return returnstr
     
-    def sortedArrayToBST(self, nums:list) -> TreeNode | None:
+    def sortedArrayToBST(self, nums:list) -> DoublyNode | None:
         if not nums: return None
         mid = len(nums) // 2
-        tree = TreeNode(nums[mid])
+        tree = DoublyNode(nums[mid])
         tree.left = self.sortedArrayToBST(nums[:mid])
         tree.right = self.sortedArrayToBST(nums[mid+1:])
         return tree

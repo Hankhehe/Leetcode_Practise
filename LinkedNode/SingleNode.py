@@ -1,25 +1,25 @@
-class SingleLinkedNode:
+class SingleNode:
     def __init__(self,val) -> None:
         self.val = val
         self.next = None
 
-class OperatorSingleLinkedNode(object):
+class OperatorSingleLinkedNode:
     def __init__(self):
         self.header = None
         self.length = 0
 
     # 1、判斷是否為空
-    def is_empty(self):
+    def Is_Empty(self):
         if self.header == None:
             return True
         else:
             return False
 
     # 頭部插入
-    def add(self, val):
-        node = SingleLinkedNode(val)
+    def AddTop(self, val):
+        node = SingleNode(val)
         # 如果為空
-        if self.is_empty():
+        if self.Is_Empty():
             self.header = node
         else:
             node.next = self.header
@@ -27,11 +27,11 @@ class OperatorSingleLinkedNode(object):
         self.length += 1
 
     # 尾部插入
-    def append(self, val):
-        node = SingleLinkedNode(val)
+    def Append(self, val):
+        node = SingleNode(val)
         current_Node = self.header
-        if self.is_empty():
-            self.add(val)
+        if self.Is_Empty():
+            self.AddTop(val)
         else:
             # 找到最後一個結點
             while (current_Node.next != None):
@@ -40,8 +40,8 @@ class OperatorSingleLinkedNode(object):
             self.length += 1
 
     # 指定位置插入
-    def insert(self, val, index):
-        node = SingleLinkedNode(val)
+    def Insert(self, val, index):
+        node = SingleNode(val)
         current_Node = self.header
         
         if index > self.length + 1 or index <= 0:
@@ -50,7 +50,7 @@ class OperatorSingleLinkedNode(object):
                 index = eval(input())
 
         if index == 1:
-            self.add(val)
+            self.AddTop(val)
         elif index == 2:
             node.next = self.header.next
             self.header.next = node
@@ -63,18 +63,18 @@ class OperatorSingleLinkedNode(object):
             self.length += 1
 
     # 遍歷
-    def travel(self,node=None) -> list:
-        data = []
+    def Travel(self,node=None) -> list:
+        result = []
         if not node:
             node = self.header
-        if not node: return data
+        if not node: return result
         while node:
-            data.append(node.val)
+            result.append(node.val)
             node = node.next
-        return data
+        return result
 
     # 按索引刪除
-    def delete(self, index):
+    def Delete(self, index):
         if index <= 0 or index > self.length:
             while (index <= 0 or index > self.length):
                 print("你輸入的下標不對，請重新輸入需要刪除的值的下標：")
@@ -95,7 +95,7 @@ class OperatorSingleLinkedNode(object):
         self.length -= 1
 
     # 查詢 Value 的 Index
-    def searchNodeIndexbyValue(self, num):
+    def SearchNodeIndexbyValue(self, num):
         contain = 0
         current_Node = self.header
         for i in range(self.length):
@@ -105,7 +105,7 @@ class OperatorSingleLinkedNode(object):
         return
 
     # 切斷指定 index 之前的 Node
-    def cutNodeByIndex(self, index):
+    def CutNodeByIndex(self, index):
         current_Node = self.header
         if index <= 0 or index > self.length:
             while (index <= 0 or index > self.length):
