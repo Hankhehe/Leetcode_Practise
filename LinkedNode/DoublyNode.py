@@ -49,7 +49,7 @@ class DoublyLinkedNode:
         pre.right = node.right
         post.left = node.left
 
-    def Travel(self,node=None) -> list | None:
+    def Travel(self,node=None) -> list:
         if not node:
             node = self.head
         result = []
@@ -58,7 +58,7 @@ class DoublyLinkedNode:
             node = node.right
         return result
     
-    def TravelReversed(self,node=None) -> list | None:
+    def TravelReversed(self,node=None) -> list:
         if not node:
             node = self.tall
         result = []
@@ -68,7 +68,7 @@ class DoublyLinkedNode:
         return result
 
 class Tree:
-    def __init__(self):
+    def __init__(self) -> None:
         self.root = None
 
     def Add(self,val) -> None:
@@ -92,9 +92,9 @@ class Tree:
                     myQueue.append(treeNode.left)
                     myQueue.append(treeNode.right)
  
-    def Pre_Order_Stack(self) -> list | None:
-        if not self.root: return
+    def Pre_Order_Stack(self) -> list:
         result = []
+        if not self.root: return result
         myStack = []
         node = self.root
         while myStack or node:
@@ -106,9 +106,9 @@ class Tree:
             node = node.right       #開始檢視它的右子樹
         return result
 
-    def In_Order_Stack(self) -> list | None:
-        if not self.root: return
+    def In_Order_Stack(self) -> list:
         result = []
+        if not self.root: return result
         myStack = []
         node = self.root
         while myStack or node:     #從根節點開始，一直尋找它的左子樹
@@ -120,10 +120,10 @@ class Tree:
             node = node.right
         return result
   
-    def Post_Order_Stack(self) -> list | None:
+    def Post_Order_Stack(self) -> list:
         # 先遍歷根節點，再遍歷右子樹，最後是左子樹，這樣就可以轉化為和先序遍歷一個型別了，最後只把遍歷結果逆序輸出就OK了。
-        if not self.root: return
         result = []
+        if not self.root: return result
         myStack1 = []
         myStack2 = []
         node = self.root
@@ -138,9 +138,9 @@ class Tree:
             result.append(myStack2.pop().val)
         return result
  
-    def Level_Order_Queue(self) -> list | None:       #佇列實現層次遍歷
-        if not self.root : return
+    def Level_Order_Queue(self) -> list:       #佇列實現層次遍歷
         result = []
+        if not self.root : return result
         myQueue = []
         node = self.root
         myQueue.append(node)
@@ -156,22 +156,42 @@ class Tree:
 
 
     #region 遞迴運算
-    def Pre_Order_Recursion(self,node):     #遞迴實現前序遍歷
-        if not node: return
-        print (str(node.val) + ',',end='')
-        self.Pre_Order_Recursion(node.left)
-        self.Pre_Order_Recursion(node.right)
+    def Pre_Order_Recursion(self,node=None) -> list:     #遞迴實現前序遍歷
+        result = []
+        def Calculation(node):
+            if not node : 
+                return
+            else:
+                result.append(node.val)
+                Calculation(node.left)
+                Calculation(node.right)
+        if not node : node = self.root
+        Calculation(node)
+        return result
 
-    def In_Order_Recursion(self,node):      #遞迴實現中序遍歷
-        if not node: return
-        self.In_Order_Recursion(node.left)
-        print(str(node.val) + ',',end='')
-        self.In_Order_Recursion(node.right)
+    def In_Order_Recursion(self,node=None) -> list:      #遞迴實現中序遍歷
+        result = []
+        def Calculation(node):
+            if not node : 
+                return
+            else:
+                Calculation(node.left)
+                result.append(node.val)
+                Calculation(node.right)
+        if not node : node = self.root
+        Calculation(node)
+        return result
 
-    def Post_Order_Recursion(self,node):     #遞迴實現後序遍歷
-        if not node: return
-        self.Post_Order_Recursion(node.left)
-        self.Post_Order_Recursion(node.right)
-        print(str(node.val) + ',' ,end='')
-
+    def Post_Order_Recursion(self,node=None) -> list:     #遞迴實現後序遍歷
+        result = []
+        def Calculation(node):
+            if not node : 
+                return
+            else:
+                Calculation(node.left)
+                Calculation(node.right)
+                result.append(node.val)
+        if not node : node = self.root
+        Calculation(node)
+        return result
     #endregion

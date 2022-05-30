@@ -3,7 +3,7 @@ from LinkedNode.SingleNode import SingleLinkedNode
 from LinkedNode.DoublyNode import Tree,DoublyLinkedNode
 import time
 
-data = [0,3,5,88,1,3,6,9,111,222]
+data = [0,1,2,3,4,5,6]
 
 #單向連結串列
 node = SingleLinkedNode()
@@ -43,10 +43,13 @@ print(node.Post_Order_Stack())
 pass
 
 #二元樹遞迴取值
+node = Tree()
+for i in data:
+    node.Add(i)  #建立完整二元樹
 nodecpoy = node.root
-node.Pre_Order_Recursion(nodecpoy)
-node.In_Order_Recursion(nodecpoy)
-node.Post_Order_Recursion(nodecpoy)
+print(node.Pre_Order_Recursion())
+print(node.In_Order_Recursion())
+print(node.Post_Order_Recursion())
 pass
 
 
