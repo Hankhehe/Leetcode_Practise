@@ -23,9 +23,15 @@ class Leetcode:
         return strs[0][:common_index]
 
     def isValid(self, s: str) -> bool:
-        while "()" in s or "{}" in s or "[]" in s:
-            s = s.replace("{}", "").replace("()", "").replace("[]", "")
-        return s == ""
+        checkstr=''
+        for i in range(len(s)):
+            if s[i] == '(' or s[i] == ')' or s[i] == '[' or s[i] == ']' or s[i] == '{' or s[i] == '}':
+                checkstr = checkstr+s[i]
+            else : 
+                pass
+        while "()" in checkstr or "{}" in checkstr or "[]" in checkstr:
+            checkstr = checkstr.replace("{}", "").replace("()", "").replace("[]", "")
+        return checkstr == ""
 
     def mergeTwoLists(self, l1, l2):
         l3 = l1+l2
